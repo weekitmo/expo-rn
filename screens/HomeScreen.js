@@ -9,12 +9,13 @@ import {
   TouchableOpacity,
   View
 } from "react-native"
-import WSearchBar from '../components/WSearchBar'
+import WSearchBar from "../components/WSearchBar"
 import { Button, ThemeProvider, Avatar } from "react-native-elements"
-import { DeviceEventEmitter } from 'react-native'
+import { DeviceEventEmitter } from "react-native"
 
 import { MonoText } from "../components/StyledText"
 import { NavigationActions } from "react-navigation"
+import Circle from "../components/Circle"
 
 function searchCb(data) {
   console.log("parent", data)
@@ -28,17 +29,22 @@ export default function HomeScreen({ navigation }) {
 
   const jumpTo = function() {
     //console.log("jump", navigation)
-    navigation.navigate("Dynamic", {
+    navigation.navigate({
+      routeName: "Dynamic",
       params: {
-        back_keys: navigation.key || "123"
+        back_keys: navigation.key || "default value",
+        title: "Guides"
       }
     })
   }
+
+  let circleComponent = Circle({ imageName: "md-star", size: 48, iconColor: "#fff" })
   return (
     <View style={styles.container}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
+        <View style={{flex: 1, flexDirection: "row", justifyContent: "center"}}>{circleComponent}</View>
         <View style={styles.welcomeContainer}>
           <Image
             source={
@@ -65,14 +71,14 @@ export default function HomeScreen({ navigation }) {
           />
         </View>
 
-        <WSearchBar onSearchCb={searchCb}/>
+        <WSearchBar onSearchCb={searchCb} />
 
         <View style={styles.getStartedContainer}>
           <DevelopmentModeNotice />
 
           <Text style={styles.getStartedText}>{text_title}</Text>
           <ThemeProvider>
-            <Button title="Hey!" onPress={() => jumpTo.call(this)}/>
+            <Button title="button" style={{width: 200}} onPress={() => jumpTo.call(this)} />
           </ThemeProvider>
 
           <View
@@ -93,7 +99,7 @@ export default function HomeScreen({ navigation }) {
           </TouchableOpacity>
         </View>
       </ScrollView>
-
+      {/* 底部固定 */}
       <View style={styles.tabBarInfoContainer}>
         <Text style={styles.tabBarInfoText}>
           This is a tab bar. You can edit it in:
@@ -112,14 +118,14 @@ export default function HomeScreen({ navigation }) {
 // 函数式组件没有生命周期
 
 if (Platform.Version) {
-  console.log('Running on '+Platform.Version);
+  console.log("Running on " + Platform.Version)
 }
 
 HomeScreen.navigationOptions = {
   //header: null
   title: "Home",
   headerStyle: {
-    backgroundColor: "#409EFF",
+    backgroundColor: "#409EFF"
   },
   headerTitleStyle: {
     color: "white"
@@ -165,7 +171,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    flexDirection: 'column',
+    flexDirection: "column"
   },
   developmentModeText: {
     marginBottom: 20,
@@ -175,7 +181,8 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   contentContainer: {
-    paddingTop: 30
+    paddingTop: 30,
+    paddingBottom: 40+5+17+14
   },
   welcomeContainer: {
     alignItems: "center",
@@ -223,6 +230,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3
       },
       android: {
+        // android阴影
         elevation: 20
       }
     }),

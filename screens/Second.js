@@ -1,16 +1,23 @@
 import React from "react"
-import {
-  Text,
-  View,
-  StyleSheet
-} from "react-native"
+import { Text, View, StyleSheet } from "react-native"
 import { Button, ThemeProvider } from "react-native-elements"
 export default class Second extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "second",
+      headerStyle: {
+        backgroundColor: "#409EFF"
+      },
+      headerTitleStyle: {
+        color: "white"
+      }
+    }
+  }
   constructor(props) {
     super(props)
     this.state = {}
   }
-  
+
   componentDidMount() {
     console.log(`Second componentDidMount`, this.props.navigation.state)
   }
@@ -18,19 +25,23 @@ export default class Second extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Second
-        </Text>
-        <ThemeProvider>
-            <Button title="go back" style={{ backgroundColor: 'red' }} onPress={() => this.goBack()}/>
+        <Text style={styles.text}>Second</Text>
+        <View style={{ flexDirection: "row", justifyContent: "center" }}>
+          <ThemeProvider>
+            <Button
+              title="back to prev"
+              style={{ backgroundColor: "red" }}
+              onPress={() => this.back()}
+            />
           </ThemeProvider>
+        </View>
       </View>
     )
   }
 
-  goBack() {
-    const { state } = this.props.navigation
-    console.log("back", this.props.navigation, this.props.navigation.getParam('usr', 'hehe'))
-    //this.props.navigation.goBack(state.back_keys || null)
+  back() {
+    console.log(this.props.navigation)
+    this.props.navigation.pop()
   }
 }
 
@@ -42,7 +53,8 @@ const styles = StyleSheet.create({
     color: "blue"
   },
   text: {
-    color: "red",
-    fontSize: 24
+    color: "green",
+    fontSize: 22,
+    fontWeight: "700"
   }
 })

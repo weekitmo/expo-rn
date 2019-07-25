@@ -1018,6 +1018,11 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^12.0.9"
 
+"@popmotion/easing@^1.0.1":
+  version "1.0.2"
+  resolved "https://registry.npm.taobao.org/@popmotion/easing/download/@popmotion/easing-1.0.2.tgz#17d925c45b4bf44189e5a38038d149df42d8c0b4"
+  integrity sha1-F9klxFtL9EGJ5aOAONFJ30LYwLQ=
+
 "@react-native-community/cli@^1.2.1":
   version "1.10.0"
   resolved "https://registry.npm.taobao.org/@react-native-community/cli/download/@react-native-community/cli-1.10.0.tgz#66e3c9f407763281f7060c034145650bf0d6786c"
@@ -1165,6 +1170,11 @@
   resolved "https://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.136.tgz#413e85089046b865d960c9ff1d400e04c31ab60f"
   integrity sha1-QT6FCJBGuGXZYMn/HUAOBMMatg8=
 
+"@types/node@^10.0.5":
+  version "10.14.13"
+  resolved "https://registry.npm.taobao.org/@types/node/download/@types/node-10.14.13.tgz?cache=0&sync_timestamp=1563391049881&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-10.14.13.tgz#ac786d623860adf39a3f51d629480aacd6a6eec7"
+  integrity sha1-rHhtYjhgrfOaP1HWKUgKrNam7sc=
+
 "@types/qs@^6.5.1":
   version "6.5.3"
   resolved "https://registry.npm.taobao.org/@types/qs/download/@types/qs-6.5.3.tgz#1c3b71b091eaeaf5924538006b7f70603ce63d38"
@@ -1261,6 +1271,15 @@ ajv@^6.5.5:
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
+
+animated-pose@^1.0.0, animated-pose@^1.2.0:
+  version "1.2.3"
+  resolved "https://registry.npm.taobao.org/animated-pose/download/animated-pose-1.2.3.tgz#3a2f47e0e5711edfdeaceb18bc9afc448cf4d401"
+  integrity sha1-Oi9H4OVxHt/erOsYvJr8RIz01AE=
+  dependencies:
+    "@popmotion/easing" "^1.0.1"
+    hey-listen "^1.0.5"
+    pose-core "^2.0.3"
 
 ansi-colors@^1.0.1:
   version "1.1.0"
@@ -3596,6 +3615,11 @@ has@^1.0.1, has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+hey-listen@^1.0.5:
+  version "1.0.8"
+  resolved "https://registry.npm.taobao.org/hey-listen/download/hey-listen-1.0.8.tgz#8e59561ff724908de1aa924ed6ecc84a56a9aa68"
+  integrity sha1-jllWH/ckkI3hqpJO1uzISlapqmg=
+
 history@^4.7.2:
   version "4.9.0"
   resolved "https://registry.npm.taobao.org/history/download/history-4.9.0.tgz#84587c2068039ead8af769e9d6a6860a14fa1bca"
@@ -5876,6 +5900,16 @@ pn@^1.1.0:
   resolved "https://registry.npm.taobao.org/pn/download/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha1-4vTO8OIZ9GPBeas3Rj5OHs3Muvs=
 
+pose-core@^2.0.3:
+  version "2.1.0"
+  resolved "https://registry.npm.taobao.org/pose-core/download/pose-core-2.1.0.tgz#653c85a9a06f924611b909b4a2180ce102bbb258"
+  integrity sha1-ZTyFqaBvkkYRuQm0ohgM4QK7slg=
+  dependencies:
+    "@types/invariant" "^2.2.29"
+    "@types/node" "^10.0.5"
+    hey-listen "^1.0.5"
+    tslib "^1.9.1"
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.npm.taobao.org/posix-character-classes/download/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
@@ -6119,6 +6153,11 @@ react-native-gesture-handler@1.2.1:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-linear-gradient@^2.5.5:
+  version "2.5.5"
+  resolved "https://registry.npm.taobao.org/react-native-linear-gradient/download/react-native-linear-gradient-2.5.5.tgz#efea1f862bde939f6e073a51b4b3ca9e0bb62437"
+  integrity sha1-7+ofhivek59uBzpRtLPKngu2JDc=
+
 react-native-maps@0.24.2:
   version "0.24.2"
   resolved "https://registry.npm.taobao.org/react-native-maps/download/react-native-maps-0.24.2.tgz#19974f967cb0c2e24dab74ca879118e0932571b2"
@@ -6137,6 +6176,14 @@ react-native-popup-dialog@^0.18.3:
     babel-plugin-flow-react-proptypes "^9.1.1"
     prop-types "^15.6.0"
     react-native-root-siblings "^3.2.1"
+
+react-native-pose@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.npm.taobao.org/react-native-pose/download/react-native-pose-0.9.0.tgz#890be7da8853c89e22ee078922375ab8a04590c4"
+  integrity sha1-iQvn2ohTyJ4i7geJIjdauKBFkMQ=
+  dependencies:
+    animated-pose "^1.2.0"
+    react-pose-core "^0.5.0"
 
 react-native-ratings@^6.3.0:
   version "6.3.1"
@@ -6318,6 +6365,14 @@ react-navigation@^3.11.0:
     react-navigation-drawer "~1.2.1"
     react-navigation-stack "~1.4.0"
     react-navigation-tabs "~1.1.4"
+
+react-pose-core@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.npm.taobao.org/react-pose-core/download/react-pose-core-0.5.0.tgz#1f362cae5eb6331f430cde75c662879017681da3"
+  integrity sha1-HzYsrl62Mx9DDN51xmKHkBdoHaM=
+  dependencies:
+    animated-pose "^1.0.0"
+    hey-listen "^1.0.5"
 
 react-proxy@^1.1.7:
   version "1.1.8"
@@ -7310,6 +7365,11 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/trim-right/download/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
   integrity sha1-yy4SAwZ+DI3h9hQJS5/kVwTqYAM=
+
+tslib@^1.9.1:
+  version "1.10.0"
+  resolved "https://registry.npm.taobao.org/tslib/download/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
+  integrity sha1-w8GflZc/sKYpc/sJ2Q2WHuQ+XIo=
 
 tunnel-agent@^0.6.0:
   version "0.6.0"

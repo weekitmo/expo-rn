@@ -9,6 +9,9 @@ import TabBarIcon from "../components/TabBarIcon"
 import HomeScreen from "../screens/HomeScreen"
 import LinksScreen from "../screens/LinksScreen"
 import SettingsScreen from "../screens/SettingsScreen"
+import TabBar from '../components/TabBar' 
+import Icon from '../components/Icon'
+import Circle from "../components/Circle"
 
 import { DynamicStack, DynamicStack2 } from "./StackNavigator"
 
@@ -26,6 +29,10 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
   tabBarLabel: "Home",
+  /**
+   * { focused: boolean, horizontal: boolean, tintColor: string }
+   * 设备处于横屏时，horizontal 是 true
+   */
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -77,30 +84,57 @@ SettingsStack.navigationOptions = {
 }
 
 SettingsStack.path = ""
-
-const bottomTab = createBottomTabNavigator({
-  HomeStack,
-  LinksStack,
-  SettingsStack
-}, {
-  lazy: true,
-  initialRouteName: "LinksStack"
-})
-
-const tabNavigator = createStackNavigator({
-  Tab: {
-    screen: bottomTab
+/**
+ * @description 创建底部tab
+ * @property 第二个参数BottomTabNavigatorConfig.tabBarComponent 可制定tab
+ */
+const bottomTab = createBottomTabNavigator(
+  {
+    HomeStack,
+    LinksStack: {
+      screen: LinksStack,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor, focused }) => {
+          console.log(tintColor, focused)
+          var sourceImage = 'onLine'
+          if (focused) {
+            return <Circle imageName="logo-chrome" size={48} iconColor="#f76260" />
+          } else {
+            return <Icon name={sourceImage} size={48} color={tintColor} />
+          }
+          
+        }
+      }
+    },
+    SettingsStack
   },
-  Dynamic: DynamicStack,
-  Second: DynamicStack2
-}, {
-  initialRouteName: "Tab",
-  defaultNavigationOptions: ({navigation}) => ({
-    header: null,
-    gesturesEnabled: true
-  })
-})
+  {
+    lazy: true,
+    initialRouteName: "HomeStack",
+    tabBarComponent: TabBar,
+    tabBarOptions: {
+      activeTintColor: "#F34C56",
+      inactiveTintColor: "#CBCBCB"
+    }
+  }
+)
 
+const tabNavigator = createStackNavigator(
+  {
+    Tab: {
+      screen: bottomTab
+    },
+    Dynamic: DynamicStack,
+    Second: DynamicStack2
+  },
+  {
+    initialRouteName: "Tab",
+    defaultNavigationOptions: ({ navigation }) => ({
+      header: null,
+      gesturesEnabled: true
+    })
+  }
+)
 
 tabNavigator.path = ""
 

@@ -30,7 +30,9 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.0",
-    "jest-expo": "^33.0.0"
+    "jest-expo": "^33.0.0",
+    "react-native-linear-gradient": "^2.5.5",
+    "react-native-pose": "^0.9.0"
   },
   "private": true
 }

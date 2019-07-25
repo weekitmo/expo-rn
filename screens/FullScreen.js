@@ -1,16 +1,25 @@
 import React from "react"
-import {
-  Text,
-  View,
-  StyleSheet
-} from "react-native"
+import { Text, View, StyleSheet } from "react-native"
 import { Button, ThemeProvider } from "react-native-elements"
 export default class FullScreen extends React.Component {
+  static navigationOptions = ({navigation}) => {
+    console.log(navigation.state)
+
+    return {
+      title: navigation.state.params.title,
+      headerStyle: {
+        backgroundColor: "#409EFF"
+      },
+      headerTitleStyle: {
+        color: "white"
+      }
+    }
+  }
   constructor(props) {
     super(props)
     this.state = {}
   }
-  
+
   componentDidMount() {
     console.log(`FullScreen componentDidMount`)
   }
@@ -18,26 +27,29 @@ export default class FullScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>新界面
-        </Text>
-        <ThemeProvider>
-            <Button title="go back" onPress={() => this.goBack()}/>
-        </ThemeProvider>
-        <ThemeProvider>
-            <Button title="go second" onPress={() => this.goSecond()}/>
-        </ThemeProvider>
+        <Text style={styles.text}>This is Guide Interface!</Text>
+        <View
+          style={{ flexDirection: "row", justifyContent: "center" }}>
+          <ThemeProvider>
+            <Button title="back" onPress={() => this.back()} />
+          </ThemeProvider>
+        </View>
+        <View
+          style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
+          <Button title="open second" buttonStyle={{ backgroundColor: "orange" }} onPress={() => this.jumpSecond()} />
+        </View>
       </View>
     )
   }
 
-  goBack() {
+  back() {
     const { state } = this.props.navigation
-    console.log("back", this.props.navigation, this.props.navigation.getParam('back_keys', '1'))
-    //this.props.navigation.goBack(state.back_keys || null)
+    console.log("back", state, this.props.navigation.getParam("back_keys", "1"))
+    //this.props.navigation.back(state.back_keys || null)
     this.props.navigation.pop()
   }
-  goSecond() {
-    this.props.navigation.navigate("Second", { usr: "moweijie"})
+  jumpSecond() {
+    this.props.navigation.navigate("Second", { usr: "moweijie" })
   }
 }
 
@@ -49,7 +61,7 @@ const styles = StyleSheet.create({
     color: "blue"
   },
   text: {
-    color: "red",
-    fontSize: 24
+    color: "black",
+    fontSize: 22
   }
 })
